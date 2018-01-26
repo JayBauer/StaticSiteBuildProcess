@@ -1,0 +1,23 @@
+# Your project's server will run on localhost:xxxx at this port
+PORT: 8000
+
+COMPATIBILITY:
+  - "last 2 versions"
+  - "ie >= 9"
+  - "ios >= 7"
+
+PATHS:
+  dist: "dist"
+  root: "src/assets"
+  pages: "src/pages/**/*.{html,ejs}"
+  css: "src/assets/css/"
+  assets:
+    - "src/assets/**/**/*"
+    - "!src/assets/{images,js,css,fonts}{,/**/*}"
+  fonts:
+    - "src/assets/_global/fonts/**/*"
+    - "node_modules/font-awesome/fonts/*"
+  # Paths to JavaScript entry points for webpack to bundle modules
+  entries:
+    - "src/assets/js/app.js"
+    - "src/assets/js/*.js"

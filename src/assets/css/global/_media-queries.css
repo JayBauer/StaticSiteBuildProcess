@@ -1,0 +1,1 @@
+@custom-media --for-phone only screen and ($small <= width <= $medium);
