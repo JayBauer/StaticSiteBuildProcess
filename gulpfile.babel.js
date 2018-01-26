@@ -7,6 +7,7 @@ import browser       from 'browser-sync';
 import yaml          from 'js-yaml';
 import rimraf        from 'rimraf';
 import fs            from 'fs';
+import webpack       from 'webpack-stream';
 
 const $ = plugins();
 const PRODUCTION = !!(yargs.argv.production);
@@ -36,7 +37,7 @@ function loadConfig() {
 }
 
 gulp.task('build',
-  gulp.series(clean, gulp.parallel(pages, css, images)));
+  gulp.series(clean, gulp.parallel(pages, css, javascript, images)));
 
   gulp.task('default',
     gulp.series('build', server, watch));
@@ -69,6 +70,12 @@ function css() {
     .pipe(browser.reload({ stream: true }));
 }
 
+function javascript() {
+  return gulp.src(PATHS.entries)
+    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(gulp.dest('dist/js'));
+}
+
 function server(done) {
   browser.init({
     server: PATHS.dist, port: PORT, open: false
@@ -80,7 +87,7 @@ function watch() {
   gulp.watch(PATHS.assets);
   gulp.watch(PATHS.pages).on('all', gulp.series(pages, browser.reload));
   gulp.watch(PATHS.css + '.{css}').on('all', css);
-  // gulp.watch(PATHS.root + '/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
+  gulp.watch(PATHS.root + '/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
   gulp.watch(PATHS.root + '/images/**/*').on('all', gulp.series(images, browser.reload));
-  // gulp.watch(PATHS.root + '/fonts/**/*').on('all', gulp.series(fonts, browser.reload));
+  //gulp.watch(PATHS.root + '/fonts/**/*').on('all', gulp.series(fonts, browser.reload));
 }
