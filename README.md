@@ -3,7 +3,22 @@ Jay's in the house with the brand new jam.
 
 Maybe work on this intro later.
 
-## Plugin Info
+## PostHTML Plugins
+## Parser
+- [Pug](https://github.com/posthtml/posthtml-pug):
+
+## Making HTML a REAL language
+- [Include](https://github.com/posthtml/posthtml-include):
+- [Expressions](https://github.com/posthtml/posthtml-expressions):
+
+## Utility
+- [DocType]():
+- [Lorem](https://github.com/jonathantneal/posthtml-lorem):
+- [BEM](https://github.com/rajdee/posthtml-bem):
+- [Hint](https://github.com/posthtml/posthtml-hint):
+- [W3C Verification](https://github.com/posthtml/posthtml-w3c):
+
+## PostCSS Plugins
 ### The Basics
 - [Partial Import](https://github.com/jonathantneal/postcss-partial-import): Import partials, like Sass. Supports globbing, unlike Sass. Though this seems to increase compile time, not 100% sure. More testing is needed.
 - [Nested](https://github.com/postcss/postcss-nested): Enables Sass-like nesting. Pretty much a necessity.
@@ -18,6 +33,7 @@ Maybe work on this intro later.
 - [Assets](https://github.com/borodean/postcss-assets): Isolates stylesheets from environmental changes, gets image sizes, and suffixes URLs to prevent things from breaking. Also Cachebuster.
 - [Short](https://github.com/jonathantneal/postcss-short): Opens up a bunch of shorthand utility properties.
 - [Image-Set Polyfill](https://github.com/SuperOl3g/postcss-image-set-polyfill): Automatically selects images based on screen DPI.
+- [FontAwesome](https://github.com/dan-gamble/postcss-font-awesome): Adds a succinct way of generating FontAwesome icons
 
 ### Compile time
 - [Stylelint](https://github.com/stylelint/stylelint): Lints the stylesheet to check for errors and enforce type consistency. Using the recommended spec at the moment.

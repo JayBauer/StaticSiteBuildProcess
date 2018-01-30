@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+/* @import "normalize.css"; */
+
+@import "global/variables";
+@import "global/media-queries";
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px/12px;
+  display: flex;
+  background: resolve("screenshot.png");
+  color: $black;
+
+  @media (--for-phone) {
+    color: $black;
+  }
+}

@@ -1,6 +1,7 @@
 'use strict';
 
 import gulp          from 'gulp';
+import tap           from 'gulp-tap';
 import plugins       from 'gulp-load-plugins';
 import yargs         from 'yargs';
 import browser       from 'browser-sync';
@@ -9,13 +10,23 @@ import rimraf        from 'rimraf';
 import fs            from 'fs';
 import webpack       from 'webpack-stream';
 
+// Load all Gulp plugins into $
 const $ = plugins();
-const PRODUCTION = !!(yargs.argv.production);
-const { COMPATIBILITY, PORT, PATHS } = loadConfig();
 
-const PLUGINS = [
+// Production flag
+const PRODUCTION = !!(yargs.argv.production);
+
+// Load YAML config from file
+const { COMPATIBILITY, PORT, PATHS } = loadConfig();
+function loadConfig() {
+  let ymlFile = fs.readFileSync('config.yml', 'utf8');
+  return yaml.load(ymlFile);
+}
+
+// PostCSS Plugins and Options
+const CSSPLUGINS = [
   // Sass-like functionality and compile-time tranforms
-  require('postcss-partial-import')({root: PATHS.css, prefix: '_'}),
+  require('postcss-easy-import')({ path: [ PATHS.css ], prefix: '_' }),
   require('stylelint'),
   require('postcss-nested'),
   require('postcss-advanced-variables'),
@@ -23,59 +34,90 @@ const PLUGINS = [
   require('autoprefixer')({ browsers: COMPATIBILITY }),
 
   // Utilities
-  require('postcss-font-magician'),
+  require('postcss-font-magician')({ variants: { 'Source Sans Pro': {} } }),
   require('postcss-custom-media'),
   require('postcss-media-minmax'),
-  require('postcss-assets')({ loadPaths: [PATHS.dist + '/images'], cachebuster: true }),
+  require('postcss-assets')({ loadPaths: [PATHS.dist + '/images'], relative: 'dist/css/', cachebuster: true }),
   require('postcss-short'),
   require('postcss-image-set-polyfill'),
+  require('postcss-font-awesome')
 ];
 
-function loadConfig() {
-  let ymlFile = fs.readFileSync('config.yml', 'utf8');
-  return yaml.load(ymlFile);
-}
-
 gulp.task('build',
-  gulp.series(clean, gulp.parallel(pages, css, javascript, images)));
+  gulp.series(clean, pages, gulp.parallel(images, css, lint, javascript)));
 
-  gulp.task('default',
-    gulp.series('build', server, watch));
-//
+gulp.task('default',
+  gulp.series('build', server, watch));
+
 // gulp.task('package',
 //   gulp.series('build', package));
 
+// Delete existing 'dist' folder before running tasks
 function clean(done) {
   rimraf(PATHS.dist, done);
 }
 
+// Check 'pages' folder, run through Pug filter, then lint and validate
 function pages() {
-  return gulp.src(PATHS.pages)
+  return gulp.src(PATHS.pages + '/*.{html,pug}')
+    .pipe($.pug())
+    .pipe($.htmlhint('./.htmlhintrc'))
+    .pipe($.htmlhint.reporter())
+    .pipe($.if(PRODUCTION,$.w3cjs()))
     .pipe(gulp.dest(PATHS.dist));
 }
 
-function images() {
-  return gulp.src(PATHS.root + '/images/**/*')
-    .pipe(gulp.dest(PATHS.dist + '/images'));
-}
-
+// PostCSS transforms applied, CSS minified in production
 function css() {
-  return gulp.src(PATHS.root + '/css/app.css')
+  return gulp.src(PATHS.css + '/style.css')
     .pipe($.sourcemaps.init())
-    .pipe($.postcss(PLUGINS))
+    .pipe($.postcss(CSSPLUGINS))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('.')))
-    .pipe($.if(PRODUCTION, $.cleanCss({ compatibility: 'ie9' })))
     .pipe($.if(PRODUCTION, $.postcss([require('cssnano')])))
     .pipe(gulp.dest(PATHS.dist + '/css'))
     .pipe(browser.reload({ stream: true }));
 }
 
-function javascript() {
-  return gulp.src(PATHS.entries)
-    .pipe(webpack(require('./webpack.config.js')))
-    .pipe(gulp.dest('dist/js'));
+// Lint JS for errors and code quality
+function lint() {
+  return gulp.src(PATHS.root + '/js/*.js')
+    .pipe($.jshint({ esversion: 6 }))
+    .pipe($.notify(function(file) {
+      if(file.jshint.success) {
+        return false;
+      }
+      var errors = file.jshint.results.map(function(data) {
+        if(data.error) {
+          return '(' + data.error.line + ':' + data.error.character + ') ' + data.error.reason;
+        }
+      }).join('\n');
+      return file.relative + ' (' + file.jshint.results.length + ' errors)\n' + errors;
+    }));
 }
 
+// Compile, uglify, and concat JS files
+function javascript() {
+  return gulp.src(PATHS.entries)
+    .pipe($.sourcemaps.init())
+    .pipe(webpack(require('./webpack.config.js')))
+    .pipe($.babel())
+    .pipe($.concat('app.js', {
+      newLine:'\n;'
+    }))
+    .pipe($.if(PRODUCTION, $.uglify()
+      .on('error', e => { console.log(e); })
+    ))
+    .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+    .pipe(gulp.dest(PATHS.dist + '/js'));
+}
+
+// Move images to 'dist' (Add minification here later)
+function images() {
+  return gulp.src(PATHS.root + '/images/**/*')
+    .pipe(gulp.dest(PATHS.dist + '/images'));
+}
+
+// Run BrowserSync for watching folder changes
 function server(done) {
   browser.init({
     server: PATHS.dist, port: PORT, open: false
@@ -83,11 +125,12 @@ function server(done) {
   done();
 }
 
+// Watch folders and run tasks upon change
 function watch() {
   gulp.watch(PATHS.assets);
-  gulp.watch(PATHS.pages).on('all', gulp.series(pages, browser.reload));
-  gulp.watch(PATHS.css + '.{css}').on('all', css);
-  gulp.watch(PATHS.root + '/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
+  gulp.watch(PATHS.pages + '/**/*').on('all', gulp.series(pages, browser.reload));
+  gulp.watch(PATHS.css + '/*.{css,scss}').on('all', css);
+  gulp.watch(PATHS.root + '/js/**/*.{js,vue}').on('all', gulp.series(javascript, browser.reload));
   gulp.watch(PATHS.root + '/images/**/*').on('all', gulp.series(images, browser.reload));
   //gulp.watch(PATHS.root + '/fonts/**/*').on('all', gulp.series(fonts, browser.reload));
 }

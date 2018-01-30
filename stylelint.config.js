@@ -1,6 +1,7 @@
 "use strict"
 
 module.exports = {
+  "ignoreFiles": "node_modules/**/*.css",
   "extends": "stylelint-config-recommended",
   "rules": {
     "at-rule-empty-line-before": [ "always", {
@@ -77,7 +78,9 @@ module.exports = {
     "media-query-list-comma-newline-after": "always-multi-line",
     "media-query-list-comma-space-after": "always-single-line",
     "media-query-list-comma-space-before": "never",
-    "no-eol-whitespace": true,
+    "no-eol-whitespace": [ true, {
+      ignore: ["empty-lines"]
+    } ],
     "no-missing-end-of-source-newline": true,
     "number-leading-zero": "always",
     "number-no-trailing-zeros": true,
