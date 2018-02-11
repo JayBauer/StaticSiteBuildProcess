@@ -1,18 +1,14 @@
 @charset "utf-8";
 
-/* @import "normalize.css"; */
-
+/* Globals */
+@import "global/reset";
 @import "global/variables";
 @import "global/media-queries";
+@import "global/defaults";
+@import "global/mixins";
 
-body {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 16px/12px;
-  display: flex;
-  background: resolve("screenshot.png");
-  color: $black;
+/* Modules */
+@import "modules/*";
 
-  @media (--for-phone) {
-    color: $black;
-  }
-}
+/* Templates */
+@import "templates/*";

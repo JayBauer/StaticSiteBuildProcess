@@ -1,1 +1,10 @@
-@custom-media --for-phone only screen and ($small <= width <= $medium);
+@custom-media --for-phone only screen and (width <= $phone);
+@custom-media --for-tablet-port only screen and ($phone <= width <= $tablet-port);
+@custom-media --for-tablet-land only screen and ($tablet-port <= width <= $tablet-land);
+@custom-media --for-desktop only screen and ($tablet-land <= width <= $desktop);
+@custom-media --for-tablet-port-up only screen and (width >= $tablet-port);
+@custom-media --for-tablet-land-up only screen and (width >= $tablet-land);
+@custom-media --for-desktop-up only screen and (width >= $desktop);
+@custom-media --for-tablet-port-down only screen and (width <= $tablet-port);
+@custom-media --for-tablet-land-down only screen and (width <= $tablet-land);
+@custom-media --for-desktop-down only screen and (width <= $desktop);

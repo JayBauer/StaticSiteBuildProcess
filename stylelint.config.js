@@ -4,15 +4,11 @@ module.exports = {
   "ignoreFiles": "node_modules/**/*.css",
   "extends": "stylelint-config-recommended",
   "rules": {
-    "at-rule-empty-line-before": [ "always", {
-      except: [
-        "blockless-after-same-name-blockless",
-        "first-nested",
-      ],
-      ignore: ["after-comment"],
-    } ],
     "at-rule-name-case": "lower",
     "at-rule-name-space-after": "always-single-line",
+    "at-rule-no-unknown": [ true, {
+      ignoreAtRules: [ "extend", "at-root", "debug", "warn", "error", "if", "else", "for", "each", "while", "mixin", "include", "content", "return", "function" ]
+    } ],
     "at-rule-semicolon-newline-after": "always",
     "block-closing-brace-empty-line-before": "never",
     "block-closing-brace-newline-after": "always",
@@ -23,10 +19,6 @@ module.exports = {
     "block-opening-brace-space-before": "always",
     "color-hex-case": "lower",
     "color-hex-length": "short",
-    "comment-empty-line-before": [ "always", {
-      except: ["first-nested"],
-      ignore: ["stylelint-commands"],
-    } ],
     "comment-whitespace-inside": "always",
     "custom-property-empty-line-before": [ "always", {
       except: [
@@ -86,7 +78,7 @@ module.exports = {
     "number-no-trailing-zeros": true,
     "property-case": "lower",
     "rule-empty-line-before": [ "always-multi-line", {
-      except: ["first-nested"],
+      except: ["first-nested", "inside-block"],
       ignore: ["after-comment"],
     } ],
     "selector-attribute-brackets-space-inside": "never",
@@ -95,7 +87,6 @@ module.exports = {
     "selector-combinator-space-after": "always",
     "selector-combinator-space-before": "always",
     "selector-descendant-combinator-no-non-space": true,
-    "selector-list-comma-newline-after": "always",
     "selector-list-comma-space-before": "never",
     "selector-max-empty-lines": 0,
     "selector-pseudo-class-case": "lower",

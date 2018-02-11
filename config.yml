@@ -10,6 +10,7 @@ PATHS:
   dist: "dist"
   root: "src/assets"
   pages: "src/pages"
+  data: "src/data"
   css: "src/assets/css"
   assets:
     - "src/assets/**/**/*"

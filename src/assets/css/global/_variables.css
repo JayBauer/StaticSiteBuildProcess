@@ -1,5 +1,15 @@
+$row-width: 1000px;
+$header-height: 100px;
+
 $black: #262626;
 $white: #fefefe;
+$gray: #ede9ea;
+$dark-gray: #979797;
+$darker-gray: #828282;
+$turq: #55b7b3;
 
-$small: 300px;
-$medium: 600px;
+$phone: 599px;
+$tablet-port: 600px;
+$tablet-land: 900px;
+$desktop: 1200px;
+$desktop-big: 1800px;

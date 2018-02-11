@@ -1,6 +1,7 @@
-extends partials/layout.pug
+extends layouts/default.pug
 
 block content
-  button#btn(data-page="1" data-per-page="1") CLICK ME
-  .content
+  - var data = [header] // This is not necessary, but is an alternative way to show data
+  section#header
+        h1 #{header}
   script(src="/js/app.js")

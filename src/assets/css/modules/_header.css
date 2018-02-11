@@ -1,0 +1,4 @@
+header {
+  position: absolute;
+  size: 100% $header-height;
+}

@@ -34,13 +34,16 @@ const CSSPLUGINS = [
   require('autoprefixer')({ browsers: COMPATIBILITY }),
 
   // Utilities
-  require('postcss-font-magician')({ variants: { 'Source Sans Pro': {} } }),
+  require('postcss-font-magician')({
+    variants: { 'Source Sans Pro': {} },
+    hosted: ['./src/assets/fonts']
+  }),
+  require('postcss-pxtorem')(),
   require('postcss-custom-media'),
   require('postcss-media-minmax'),
   require('postcss-assets')({ loadPaths: [PATHS.dist + '/images'], relative: 'dist/css/', cachebuster: true }),
   require('postcss-short'),
-  require('postcss-image-set-polyfill'),
-  require('postcss-font-awesome')
+  require('postcss-image-set-polyfill')
 ];
 
 gulp.task('build',
@@ -57,9 +60,13 @@ function clean(done) {
   rimraf(PATHS.dist, done);
 }
 
-// Check 'pages' folder, run through Pug filter, then lint and validate
+// Check 'pages' and 'data' folders, load data, run through Pug compiler, then lint and validate
 function pages() {
   return gulp.src(PATHS.pages + '/*.{html,pug}')
+    .pipe($.data(function(file) {
+      return yaml.load(fs.readFileSync(PATHS.data + '/copy.yml', 'utf8'));
+      // return JSON.parse(fs.readFileSync(PATHS.data + '/copy.json'))
+    }))
     .pipe($.pug())
     .pipe($.htmlhint('./.htmlhintrc'))
     .pipe($.htmlhint.reporter())
@@ -71,6 +78,7 @@ function pages() {
 function css() {
   return gulp.src(PATHS.css + '/style.css')
     .pipe($.sourcemaps.init())
+    .pipe($.plumber())
     .pipe($.postcss(CSSPLUGINS))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('.')))
     .pipe($.if(PRODUCTION, $.postcss([require('cssnano')])))
@@ -129,8 +137,8 @@ function server(done) {
 function watch() {
   gulp.watch(PATHS.assets);
   gulp.watch(PATHS.pages + '/**/*').on('all', gulp.series(pages, browser.reload));
-  gulp.watch(PATHS.css + '/*.{css,scss}').on('all', css);
+  gulp.watch(PATHS.css + '/**/*.{css,scss}').on('all', css);
   gulp.watch(PATHS.root + '/js/**/*.{js,vue}').on('all', gulp.series(javascript, browser.reload));
   gulp.watch(PATHS.root + '/images/**/*').on('all', gulp.series(images, browser.reload));
-  //gulp.watch(PATHS.root + '/fonts/**/*').on('all', gulp.series(fonts, browser.reload));
+  // gulp.watch(PATHS.root + '/fonts/**/*').on('all', gulp.series(fonts, browser.reload));
 }

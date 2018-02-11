@@ -28,6 +28,7 @@ Maybe work on this intro later.
 
 ### Utilities
 - [Font Magician](https://github.com/jonathantneal/postcss-font-magician): Literally does everything you could ever want for @font-faces. Check the site for options, you're gonna need them customized for every project.
+- [PxToRem](https://github.com/cuth/postcss-pxtorem): Converts pixel units to rem. Only on font-related sizes by default.
 - [Custom Media](https://github.com/postcss/postcss-custom-media): Makes future CSS syntax for @custom-media functions available.
 - [Media MinMax](https://github.com/postcss/postcss-media-minmax): Allows for operators like `>` and `<=` in media queries.
 - [Assets](https://github.com/borodean/postcss-assets): Isolates stylesheets from environmental changes, gets image sizes, and suffixes URLs to prevent things from breaking. Also Cachebuster.
