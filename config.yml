@@ -20,4 +20,5 @@ PATHS:
     - "node_modules/font-awesome/fonts/*"
   # Paths to JavaScript entry points for webpack to bundle modules
   entries:
-    - "src/assets/js/app.js"
+    js: "src/assets/js/app.js"
+    vue: "src/assets/js/vue.js"

@@ -28,8 +28,8 @@ const CSSPLUGINS = [
   // Sass-like functionality and compile-time tranforms
   require('postcss-easy-import')({ path: [ PATHS.css ], prefix: '_' }),
   require('stylelint'),
-  require('postcss-nested'),
   require('postcss-advanced-variables'),
+  require('postcss-nested'),
   require('postcss-define-function'),
   require('autoprefixer')({ browsers: COMPATIBILITY }),
 
@@ -49,6 +49,9 @@ const CSSPLUGINS = [
 gulp.task('build',
   gulp.series(clean, pages, gulp.parallel(images, css, lint, javascript)));
 
+gulp.task('vue',
+  gulp.series('build', vue, server, watch));
+
 gulp.task('default',
   gulp.series('build', server, watch));
 
@@ -62,12 +65,13 @@ function clean(done) {
 
 // Check 'pages' and 'data' folders, load data, run through Pug compiler, then lint and validate
 function pages() {
-  return gulp.src(PATHS.pages + '/*.{html,pug}')
+  return gulp.src(PATHS.pages + '/*.{html,pug,php}')
     .pipe($.data(function(file) {
       return yaml.load(fs.readFileSync(PATHS.data + '/copy.yml', 'utf8'));
       // return JSON.parse(fs.readFileSync(PATHS.data + '/copy.json'))
     }))
     .pipe($.pug())
+    //.pipe($.rename({extname: '.php'}))
     .pipe($.htmlhint('./.htmlhintrc'))
     .pipe($.htmlhint.reporter())
     .pipe($.if(PRODUCTION,$.w3cjs()))
@@ -105,10 +109,9 @@ function lint() {
 
 // Compile, uglify, and concat JS files
 function javascript() {
-  return gulp.src(PATHS.entries)
+  return gulp.src(PATHS.entries.js)
     .pipe($.sourcemaps.init())
     .pipe(webpack(require('./webpack.config.js')))
-    .pipe($.babel())
     .pipe($.concat('app.js', {
       newLine:'\n;'
     }))
@@ -116,6 +119,15 @@ function javascript() {
       .on('error', e => { console.log(e); })
     ))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+    .pipe(gulp.dest(PATHS.dist + '/js'));
+}
+
+function vue() {
+  return gulp.src(PATHS.entries.vue)
+    .pipe(webpack(require('./webpack.config.js')))
+    .pipe($.if(PRODUCTION, $.uglify()
+      .on('error', e => { console.log(e); })
+    ))
     .pipe(gulp.dest(PATHS.dist + '/js'));
 }
 
@@ -137,8 +149,9 @@ function server(done) {
 function watch() {
   gulp.watch(PATHS.assets);
   gulp.watch(PATHS.pages + '/**/*').on('all', gulp.series(pages, browser.reload));
+  gulp.watch(PATHS.data + '/**/*').on('all', gulp.series(pages, browser.reload));
   gulp.watch(PATHS.css + '/**/*.{css,scss}').on('all', css);
-  gulp.watch(PATHS.root + '/js/**/*.{js,vue}').on('all', gulp.series(javascript, browser.reload));
+  gulp.watch(PATHS.root + '/js/**/*.{js}').on('all', gulp.series(javascript, browser.reload));
+  gulp.watch(PATHS.root + '/js/**/*.{vue}').on('all', gulp.series(vue, browser.reload));
   gulp.watch(PATHS.root + '/images/**/*').on('all', gulp.series(images, browser.reload));
-  // gulp.watch(PATHS.root + '/fonts/**/*').on('all', gulp.series(fonts, browser.reload));
 }
