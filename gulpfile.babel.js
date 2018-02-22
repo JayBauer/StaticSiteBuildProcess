@@ -33,6 +33,9 @@ const CSSPLUGINS = [
   require('postcss-define-function'),
   require('autoprefixer')({ browsers: COMPATIBILITY }),
 
+  // Grid
+  require('lost'),
+
   // Utilities
   require('postcss-font-magician')({
     variants: { 'Source Sans Pro': {} },

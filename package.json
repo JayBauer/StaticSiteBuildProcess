@@ -55,6 +55,7 @@
     "jquery": "^3.3.1",
     "js-yaml": "^3.10.0",
     "jshint": "^2.9.5",
+    "lost": "^8.2.0",
     "postcss": "^6.0.16",
     "postcss-advanced-variables": "^2.3.0",
     "postcss-assets": "^5.0.0",
