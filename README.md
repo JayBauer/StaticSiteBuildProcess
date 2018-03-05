@@ -11,13 +11,6 @@ Maybe work on this intro later.
 - [Include](https://github.com/posthtml/posthtml-include):
 - [Expressions](https://github.com/posthtml/posthtml-expressions):
 
-## Utility
-- [DocType]():
-- [Lorem](https://github.com/jonathantneal/posthtml-lorem):
-- [BEM](https://github.com/rajdee/posthtml-bem):
-- [Hint](https://github.com/posthtml/posthtml-hint):
-- [W3C Verification](https://github.com/posthtml/posthtml-w3c):
-
 ## PostCSS Plugins
 ### The Basics
 - [Partial Import](https://github.com/jonathantneal/postcss-partial-import): Import partials, like Sass. Supports globbing, unlike Sass. Though this seems to increase compile time, not 100% sure. More testing is needed.
@@ -25,6 +18,9 @@ Maybe work on this intro later.
 - [Advanced Variables](https://github.com/jonathantneal/postcss-advanced-variables): Lets you use Sass-like variables, but also comes with conditionals and iterators.
 - [Define Function](https://www.npmjs.com/package/postcss-define-function): Enables Sass-like functions, to the best of it's ability.
 - [Autoprefixer](https://github.com/postcss/autoprefixer): Automatically applies vendor prefixes to all properties when necessary. Also removes outdated vendor-prefixes.
+
+### Grid
+- [Lost](http://lostgrid.org/): Lost grid system. Super modular and flexible. Has the "FlexBox" version enabled by default.
 
 ### Utilities
 - [Font Magician](https://github.com/jonathantneal/postcss-font-magician): Literally does everything you could ever want for @font-faces. Check the site for options, you're gonna need them customized for every project.
@@ -42,3 +38,5 @@ Maybe work on this intro later.
 
 ## Design Stuff
 - [Vertical Rhythm](https://zellwk.com/blog/why-vertical-rhythms/): Keep a consistent line-height, use multiples of that line-height when determining spacing and margins whenever possible on the site
+
+More to come

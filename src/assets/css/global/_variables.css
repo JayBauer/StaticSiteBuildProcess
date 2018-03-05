@@ -1,15 +1,25 @@
+/* Lost Grid settings for Flexbox */
+@lost gutter 30px;
+@lost flexbox flex;
+@lost cycle none;
+@lost clearing left;
+@lost rounder 100;
+
+/* Project Defaults */
 $row-width: 1000px;
 $header-height: 100px;
 
+/* Media Query Sizes */
+$phone: 599px;
+$tablet-port: 600px;
+$tablet-land: 900px;
+$desktop: 1200px;
+$desktop-big: 1800px;
+
+/* Colours */
 $black: #262626;
 $white: #fefefe;
 $gray: #ede9ea;
 $dark-gray: #979797;
 $darker-gray: #828282;
 $turq: #55b7b3;
-
-$phone: 599px;
-$tablet-port: 600px;
-$tablet-land: 900px;
-$desktop: 1200px;
-$desktop-big: 1800px;

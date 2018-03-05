@@ -7,7 +7,7 @@ module.exports = {
     "at-rule-name-case": "lower",
     "at-rule-name-space-after": "always-single-line",
     "at-rule-no-unknown": [ true, {
-      ignoreAtRules: [ "extend", "at-root", "debug", "warn", "error", "if", "else", "for", "each", "while", "mixin", "include", "content", "return", "function" ]
+      ignoreAtRules: [ "extend", "at-root", "debug", "warn", "error", "if", "else", "for", "each", "while", "mixin", "include", "content", "return", "function", "lost" ]
     } ],
     "at-rule-semicolon-newline-after": "always",
     "block-closing-brace-empty-line-before": "never",
