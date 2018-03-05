@@ -3,13 +3,8 @@ Jay's in the house with the brand new jam.
 
 Maybe work on this intro later.
 
-## PostHTML Plugins
 ## Parser
-- [Pug](https://github.com/posthtml/posthtml-pug):
-
-## Making HTML a REAL language
-- [Include](https://github.com/posthtml/posthtml-include):
-- [Expressions](https://github.com/posthtml/posthtml-expressions):
+- [Pug](https://pugjs.org/): Pug templating language. Makes creating markup super spicy. Make sure to check out the documentation or you'll have no idea what's going on.
 
 ## PostCSS Plugins
 ### The Basics
