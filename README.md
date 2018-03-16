@@ -12,6 +12,8 @@ Maybe work on this intro later.
 - [Nested](https://github.com/postcss/postcss-nested): Enables Sass-like nesting. Pretty much a necessity.
 - [Advanced Variables](https://github.com/jonathantneal/postcss-advanced-variables): Lets you use Sass-like variables, but also comes with conditionals and iterators.
 - [Define Function](https://www.npmjs.com/package/postcss-define-function): Enables Sass-like functions, to the best of it's ability.
+- [Extend At-Rule](https://github.com/jonathantneal/postcss-extend-rule): Enables the use of the `@extend` rule to extend your classes. Recommended to use the `%` character in front of your class names to designate them as extends.
+- [Math](https://github.com/shauns/postcss-math): Enables many new math functions available through the `math()` function by default.
 - [Autoprefixer](https://github.com/postcss/autoprefixer): Automatically applies vendor prefixes to all properties when necessary. Also removes outdated vendor-prefixes.
 
 ### Grid
