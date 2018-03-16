@@ -1,12 +1,9 @@
 doctype html
 html(lang="en")
-  head
-    meta(charset="utf-8")
-    meta(http-equiv="x-ua-compatible" content="ie=edge")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title For Static Sites
-    link(rel='stylesheet', href='css/style.css', type='text/css')
+  include ../partials/head.pug
+  
   body
-    header
-    block content
-    footer
+    main
+      include ../partials/header.pug
+      block content
+      include ../partials/footer.pug

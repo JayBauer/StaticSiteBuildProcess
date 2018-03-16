@@ -73,10 +73,14 @@ module.exports = {
     "no-eol-whitespace": [ true, {
       ignore: ["empty-lines"]
     } ],
+    "no-descending-specificity": null,
     "no-missing-end-of-source-newline": true,
     "number-leading-zero": "always",
     "number-no-trailing-zeros": true,
     "property-case": "lower",
+    "property-no-unknown": [ true, {
+      ignoreProperties: [ "/^lost/", "font-awesome" ]
+    } ],
     "rule-empty-line-before": [ "always-multi-line", {
       except: ["first-nested", "inside-block"],
       ignore: ["after-comment"],
