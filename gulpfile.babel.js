@@ -26,11 +26,13 @@ function loadConfig() {
 // PostCSS Plugins and Options
 const CSSPLUGINS = [
   // Sass-like functionality and compile-time tranforms
-  require('postcss-easy-import')({ path: [ PATHS.css ], prefix: '_' }),
   require('stylelint'),
+  require('postcss-easy-import')({ path: [ PATHS.css ], prefix: '_' }),
   require('postcss-advanced-variables'),
   require('postcss-nested'),
   require('postcss-define-function'),
+  require('postcss-extend-rule'),
+  require('postcss-math')({ functionName: 'math' }),
   require('autoprefixer')({ browsers: COMPATIBILITY }),
 
   // Grid
@@ -38,12 +40,14 @@ const CSSPLUGINS = [
 
   // Utilities
   require('postcss-font-magician')({
-    variants: { 'Source Sans Pro': {} },
+    foundries: ['hosted google'],
+    variants: { 'Muli': {} },
     hosted: ['./src/assets/fonts']
   }),
   require('postcss-pxtorem')(),
   require('postcss-custom-media'),
   require('postcss-media-minmax'),
+  require('postcss-font-awesome'),
   require('postcss-assets')({ loadPaths: [PATHS.dist + '/images'], relative: 'dist/css/', cachebuster: true }),
   require('postcss-short'),
   require('postcss-image-set-polyfill')
@@ -86,7 +90,7 @@ function css() {
   return gulp.src(PATHS.css + '/style.css')
     .pipe($.sourcemaps.init())
     .pipe($.plumber())
-    .pipe($.postcss(CSSPLUGINS))
+    .pipe($.postcss(CSSPLUGINS, { parser: require('postcss-scss') } ))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('.')))
     .pipe($.if(PRODUCTION, $.postcss([require('cssnano')])))
     .pipe(gulp.dest(PATHS.dist + '/css'))
@@ -96,7 +100,10 @@ function css() {
 // Lint JS for errors and code quality
 function lint() {
   return gulp.src(PATHS.root + '/js/*.js')
-    .pipe($.jshint({ esversion: 6 }))
+    .pipe($.jshint({
+      esversion: 6,
+      // asi: true // Surpresses missing semi-colon warning
+    }))
     .pipe($.notify(function(file) {
       if(file.jshint.success) {
         return false;

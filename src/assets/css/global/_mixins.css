@@ -1,3 +1,11 @@
+/*
+Page/Template: All; Project Mixins
+Author: Jay Bauer
+Organization: Elite Digital
+
+Mixins placed here for organizational purposes
+*/
+
 @mixin bg-cover($image) {
   background: resolve($image) no-repeat;
   background-size: cover;

@@ -1,4 +1,108 @@
+/*
+Page/Template: Header
+Author: Jay Bauer
+Organization: Elite Digital
+
+All header styles
+Covers both mobile and desktop
+Does not include styles for page-specific content within the header div, look to the individual template CSS files for that
+*/
+
 header {
-  position: absolute;
-  size: 100% $header-height;
+  padding: 30px 40px; /* Pads the entire header div regardless of size */
+
+  /* ************** */
+  /* Mobile Navmenu */
+  /* ************** */
+  .nav-box--mobile {
+    lost-flex-container: row;
+    justify-content: space-between;
+    align-items: center;
+    .nav-box__nav-links {
+      a.email-link {
+        font-size: 30px/30px;
+        color: $orange;
+        i::before {
+          font-awesome: envelope;
+        }
+      }
+    }
+    .nav-box__logo {
+      img {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+    @media (--for-phone) {
+      position: relative;
+      padding-bottom: 75px;
+      max-width: 320px;
+      margin: 0 auto;
+      .nav-box__logo {
+        display: flex;
+        justify-content: center;
+        position: absolute 60% * * 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        img {
+          align-self: center;
+        }
+      }
+    }
+    @media (--for-tablet-port-up) {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    /* Hide when on desktop */
+    @media (--nav-menu) {
+      display: none;
+    }
+  }
+
+  /* *************** */
+  /* Desktop Navmenu */
+  /* *************** */
+  .nav-box--desktop {
+    display: none;
+    justify-content: space-between;
+    background-color: $blue;
+    padding: 20px;
+    .nav-box__nav-menu {
+      align-self: flex-end;
+      nav.nav-menu__login-nav {
+        padding: 0 20px;
+        lost-flex-container: row;
+        a.login-nav__nav-item {
+          color: $white;
+          lost-align: right;
+          lost-column: 1/2;
+          &:nth-of-type(1) {
+            color: $orange;
+          }
+          &:nth-of-type(2) {
+            &::before {
+              margin-right: 10px;
+              color: $orange;
+              font-size: 20px;
+              font-awesome: envelope;
+            }
+          }
+        }
+      }
+      nav.nav-menu__main-nav {
+        padding: 15px 20px 10px;
+        a.main-nav__nav-item {
+          lost-column: 1/5;
+          h4 {
+            color: $white;
+            display: inline-block;
+          }
+        }
+      }
+    }
+    /* Show when on desktop */
+    @media (--nav-menu) {
+      display: flex;
+    }
+  }
 }

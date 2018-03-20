@@ -1,5 +1,15 @@
+/*
+Page/Template: All; Style Resets
+Author: Jay Bauer
+Organization: Elite Digital
+
+Standard (slightly modified) reset file
+*/
+
 * {
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html, body, div, span, applet, object, iframe,

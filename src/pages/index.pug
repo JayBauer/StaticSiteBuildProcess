@@ -1,8 +1,100 @@
 extends layouts/default.pug
 
+block title
+  title Diagnostic Illumination
+
+mixin benefits-card()
+  if attributes.direction == 'right'
+    .benefits-card.benefits-card--right
+      div(class=`benefits-card__image benefits-card__image--${attributes.color}`)
+        img(src=attributes.src alt=attributes.alt)
+      .benefits-card__text
+        div
+          block
+  else
+    .benefits-card.benefits-card--left
+      div(class=`benefits-card__image benefits-card__image--${attributes.color}`)
+        img(src=attributes.src alt=attributes.alt)
+      .benefits-card__text
+        div
+          block
+          
+mixin how-it-works(num, src, alt)
+  li.how-it-works__item
+    img(src=`images/${src}`, alt=alt)
+    h2 #{num}.
+    div.how-it-works__item__content
+      block
+      p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+
+block header-content
+  div.header-content
+    div.header-content__text
+      h1 Schedule Your MRI Today
+      h4 Why wait for an MRI? Schedule your MRI appointment within 24 hours and receive your results within 24 hours post MRI scan completion.
+    div.header-content__buttons
+      button#elibigility-btn.btn-big Am I Eligible?
+      button#booking-btn.btn-big Book
+
 block content
-  - var data = [header] // This is not necessary, but is an alternative way to show data
-  section#header
-        h1 #{header}
-        h2 #{footer}
-  script(src="/js/app.js")
+  section#benefits
+    h1 The Benefits
+    div.card-blocks
+      div.card-blocks__left-blocks
+        +benefits-card()(src='images/calendar.svg', alt='Calendar', color='orange')
+          h4 MRI appointments are schedules directly through the hospital.
+          p Within 24 hours of receiving a completed requisiton form, hospital staff will contact patients to book an MRI appointment and coordinate the collection of additional medical information.
+        +benefits-card()(src='images/results.svg', alt='Results Clipboard', color='yellow')
+          h4 MRI Results available 24 hours post MRI scan.
+          p MRI results can be accessed through a hospital portal with your own unique login 24 hours following MRI scan completion.  Referring physicians or third pary sources will be forwarded results within one business day.
+        +benefits-card()(src='images/money.svg', alt='Money Icon', color='light-blue')
+          h4 Litigation financing for MRI scans
+          p Diagnostic Illumination offers convenient third-party litigation financing, which permits for deferred payment of the MRI scan until the case has settled.
+      div.card-blocks__divider
+      div.card-blocks__right-blocks
+        +benefits-card()(src='images/phone.svg', alt='24 Hour Phone', color='purple', direction='right')
+          h4 Urgent MRI Scans can be performed within 24 hours; Non-urgent MRI Scans within 1~2 weeks 
+        +benefits-card()(src='images/arrow-box.svg', alt='Box Icon with Arrow', color='red', direction='right')
+          h4 Multiple body part MRI scan packages offered
+          p Multiple Body Part MRI Scan Packages offered as an incentive to safeguard cost as being a deterrent in one’s resolve to detect pathology
+                 
+  section#location
+    div.location__map
+      div.location__map__image
+        img(src="images/di-map.png" alt="Location Map")
+    div.location__divider
+    div.location__info
+      div.location__info__text
+        h1 Location
+        br
+        h5 Humber River Hospital
+        h5: span 1235 Wilson Ave
+        h5: span Toronto, ON
+        h5: span M3M 0B2
+        br
+        br
+        h5: a(href=`mailto:${infoAddress}`) #{infoAddress}
+        button#contact-btn.btn-big Contact Us
+
+  section#how-it-works
+    h1 How It Works
+    ul.how-it-works__list
+      +how-it-works(1, 'airplane.svg', 'Paper Airplane Icon')
+        h2 Select Area to Be Scanned
+      +how-it-works(2, 'money-orange.svg', 'Money Icon')
+        h2 See Quote
+      +how-it-works(3, 'pencil-clipboard.svg', 'Pencil and Clipboard Icon')
+        h2 Sign Third Party Payment Waiver
+      +how-it-works(4, 'upload-paper.svg', 'Paper with Upload Symbol')
+        h2 Upload/Get Referral
+      +how-it-works(5, 'phone-arrow.svg', 'Phone with Arrow Icon')
+        h2 Schedule Appointment with Hospital
+      +how-it-works(6, 'scan.svg', 'Scanning Icon')
+        h2 Scan
+      +how-it-works(7, 'results-orange.svg', 'Clipboard Icon')
+        h2 See Results
+  
+  section#book-now
+    h1 Book Now
+    h4 Get Results back in two weeks.
+    button#book-now-btn.btn-big Book A Scan

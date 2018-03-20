@@ -1,0 +1,11 @@
+footer
+  div.footer-logo
+    img.footer-logo__circle(src=logo.circle.src alt=logo.circle.alt)
+    img.footer-logo__text(src=logo.text.src alt=logo.text.alt)
+  div.footer-info
+    h5: span Phone/Fax: #{infoPhone}
+    h5: span: a.footer-nav__email(href=`mailto:${infoAddress}`) #{infoAddress}
+  div.footer-copy
+    p Elite Digital Copyright &copy; 2018
+    
+script(src="/js/app.js")

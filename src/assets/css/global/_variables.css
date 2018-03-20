@@ -1,13 +1,17 @@
+/*
+Page/Template: All; Website Variables
+Author: Jay Bauer
+Organization: Elite Digital
+
+All global project variables should go here
+*/
+
 /* Lost Grid settings for Flexbox */
 @lost gutter 30px;
 @lost flexbox flex;
 @lost cycle none;
 @lost clearing left;
 @lost rounder 100;
-
-/* Project Defaults */
-$row-width: 1000px;
-$header-height: 100px;
 
 /* Media Query Sizes */
 $phone: 599px;
@@ -18,8 +22,17 @@ $desktop-big: 1800px;
 
 /* Colours */
 $black: #262626;
-$white: #fefefe;
-$gray: #ede9ea;
-$dark-gray: #979797;
-$darker-gray: #828282;
+$white: #fff;
+$off-white: #f4f4f4;
+$gray: #757575;
 $turq: #55b7b3;
+$blue: #1d5480;
+$orange: #f68938;
+$yellow: #f8ca6b;
+$light-blue: #4fafe2;
+$purple: #7b89a9;
+$red: #f37e6a;
+
+/* Project Defaults */
+$header-height: 100px;
+$parallax-amount: 120;
