@@ -5,3 +5,4 @@ window.$ = $;
 // import './custom/yourfile';
 
 import './custom/parallax.js';
+// import './custom/faq';

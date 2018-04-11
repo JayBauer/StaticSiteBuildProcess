@@ -1,0 +1,41 @@
+//- Big Animated Button
+mixin btn-big(id, link)
+  div.btn-big(id=id != null ? id : '#book-now-btn')
+    a(href=link != null ? link : 'booking.html')
+      svg(height="60" width="100%" xmlns="http://www.w3.org/2000/svg")
+        rect.shape(height="60" width="100%")
+    block
+
+//- Book Now CTA
+mixin book-now()
+  h1 Book Now
+  h4 Get Results back in two weeks.
+  +btn-big()
+    button Book A Scan
+
+//- Benefits Cards Blocks
+mixin card-block()
+  div(class=`card-block card-block${attributes.direction === 'right' ? '--right' : '--left'}`)
+    div(class=`card-block__image card-block__image--${attributes.color}`)
+      img(src=attributes.src alt=attributes.alt)
+    div.card-block__text
+      div
+        block
+        
+//- FAQ Question Block
+mixin question(title, answer, index)
+  div.question-block
+    input(id=index type='radio' name='faqs')
+    div.question-block__title
+      label(for=index)
+        h4 #{title}
+        img(src="/images/faq-arrow.svg" alt="FAQ Arrow")
+    div.question-block__answer
+      p #{answer}
+
+//- Circle spinner
+mixin half-circle-spinner()
+  div.half-circle-spinner
+    div.half-circle-spinner__inner
+      div.circle.circle-1
+      div.circle.circle-2

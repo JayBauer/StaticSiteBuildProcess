@@ -1,0 +1,8 @@
+section.booking-page {
+  &#booking-header {
+    nav.quiz-nav {
+      lost-center: 150px;
+      justify-content: space-between;
+    }
+  }
+}

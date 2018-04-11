@@ -1,5 +1,5 @@
 /*
-Page/Template: All; Project Mixins
+Global Styles: Project Mixins
 Author: Jay Bauer
 Organization: Elite Digital
 
@@ -9,4 +9,57 @@ Mixins placed here for organizational purposes
 @mixin bg-cover($image) {
   background: resolve($image) no-repeat;
   background-size: cover;
+}
+
+@mixin half-circle-spinner($size, $color, $speed) {
+  .half-circle-spinner {
+    size: $size;
+    .half-circle-spinner__inner {
+      size: $size;
+      border-radius: 100%;
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute 50% * * 50%;
+        transform: translate(-50%, -50%);
+        size: math($size / 4);
+        color: $color $color;
+        border-radius: 100%;
+      }
+      .circle {
+        content: '';
+        position: absolute;
+        size: 100%;
+        border-radius: 100%;
+        border: math($size / 12) solid transparent;
+        &.circle-1 {
+          border-top-color: $color;
+          animation: half-circle-spinner-animation $speed infinite;
+        }
+        &.circle-2 {
+          border-bottom-color: $color;
+          animation: half-circle-spinner-animation $speed infinite alternate;
+        }
+      }
+      @media (--for-phone) {
+        size: math($size / 1.4);
+        &::before {
+          size: math($size / 4);
+        }
+        .circle {
+          size: math($size / 1.4);
+          border: math($size / 16) solid transparent;
+        }
+      }
+    }
+  }
+}
+
+@keyframes half-circle-spinner-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

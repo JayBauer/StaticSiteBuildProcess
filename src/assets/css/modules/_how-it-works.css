@@ -1,0 +1,58 @@
+/*
+Component: How It Works Section
+Author: Jay Bauer
+Organization: Elite Digital
+
+How it Works section styles for Home and FAQ pages
+*/
+
+section.how-it-works {
+  background-color: $white;
+  .how-it-works__list {
+    lost-flex-container: row;
+    .how-it-works__item {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      max-width: 360px;
+      margin: 0 auto;
+      padding: 40px 50px 0;
+      text-align: center;
+      img {
+        margin: 10px 0;
+      }
+      h2 {
+        padding: 5px;
+        color: $blue;
+      }
+      > h2 {
+        font-size: 36px/36px;
+      }
+    }
+  }
+  /* Media Queries */
+  @media (--for-tablet-land-up) {
+    h1 {
+      padding: 50px 0;
+    }
+    .how-it-works__list {
+      lost-center: 1200px;
+      .how-it-works__item {
+        lost-column: 1/2 0 0;
+        flex-flow: row;
+        align-items: flex-start;
+        text-align: left;
+        img {
+          padding-right: 20px;
+          transform: translateY(-20%);
+        }
+        h2 {
+          padding: 0 0 10px 0;
+        }
+        > h2 {
+          padding-right: 40px;
+        }
+      }
+    }
+  }
+}

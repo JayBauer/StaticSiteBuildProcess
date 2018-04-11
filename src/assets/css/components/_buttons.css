@@ -1,0 +1,45 @@
+%btn {
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 100%;
+  color: $orange;
+  rect {
+    fill: transparent;
+    stroke-dasharray: 320 75;
+    stroke-dashoffset: -474;
+    stroke-width: 10px;
+    stroke: $orange;
+    cursor: pointer;
+    transition: all 0.7s;
+  }
+  &:hover rect {
+    stroke-dashoffset: -844;
+  }
+  button {
+    font-family: "Raleway", monospace;
+    font-weight: extrabold;
+    white-space: nowrap;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+}
+
+.btn-small {
+  @extend %btn;
+
+  font-size: 14px/14px;
+  border: 3px / solid / $orange;
+}
+
+.btn-big {
+  @extend %btn;
+
+  position: relative;
+  button {
+    font-size: 20px/20px;
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

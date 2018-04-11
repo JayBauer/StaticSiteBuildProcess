@@ -1,5 +1,5 @@
 /*
-Page/Template: All; Style Resets
+Global Styles: Style Resets
 Author: Jay Bauer
 Organization: Elite Digital
 
@@ -10,6 +10,7 @@ Standard (slightly modified) reset file
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility; /* Possible performance concerns with this rule */
 }
 
 html, body, div, span, applet, object, iframe,

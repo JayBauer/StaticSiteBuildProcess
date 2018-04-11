@@ -1,0 +1,20 @@
+include ./mixins.pug
+
+div.location__map
+  div.location__map__image
+    img(src="/images/di-map.png" alt="Location Map")
+div.location__divider
+div.location__info
+  div.location__info__text
+    h1 Location
+    br
+    h5 Humber River Hospital
+    h5: span 1235 Wilson Ave
+    h5: span Toronto, ON
+    h5: span M3M 0B2
+    br
+    br
+    h5: a(href=`mailto:${infoAddress}`) #{infoAddress}
+    
+    +btn-big('contact-btn', 'contact.html#contact')
+      button Contact Us

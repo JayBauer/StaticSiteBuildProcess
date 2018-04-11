@@ -1,0 +1,24 @@
+mixin how-it-works(num, src, alt)
+  li.how-it-works__item
+    img(src=`/images/${src}`, alt=alt)
+    h2 #{num}.
+    div.how-it-works__item__content
+      block
+      p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+
+h1 How It Works
+ul.how-it-works__list
+  +how-it-works(1, 'airplane.svg', 'Paper Airplane Icon')
+    h2 Select Area to Be Scanned
+  +how-it-works(2, 'money-orange.svg', 'Money Icon')
+    h2 See Quote
+  +how-it-works(3, 'pencil-clipboard.svg', 'Pencil and Clipboard Icon')
+    h2 Sign Third Party Payment Waiver
+  +how-it-works(4, 'upload-paper.svg', 'Paper with Upload Symbol')
+    h2 Upload/Get Referral
+  +how-it-works(5, 'phone-arrow.svg', 'Phone with Arrow Icon')
+    h2 Schedule Appointment with Hospital
+  +how-it-works(6, 'scan.svg', 'Scanning Icon')
+    h2 Scan
+  +how-it-works(7, 'results-orange.svg', 'Clipboard Icon')
+    h2 See Results

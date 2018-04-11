@@ -5,7 +5,11 @@
 @import "global/variables";
 @import "global/media-queries";
 @import "global/defaults";
+@import "global/sticky-footer";
 @import "global/mixins";
+
+/* Components */
+@import "components/*";
 
 /* Modules */
 @import "modules/*";

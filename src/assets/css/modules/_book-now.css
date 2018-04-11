@@ -1,0 +1,21 @@
+/*
+Component: Book Now CTA
+Author: Jay Bauer
+Organization: Elite Digital
+*/
+
+section#book-now.book-now {
+  text-align: center;
+  color: $white;
+  h1 {
+    color: $white;
+  }
+  h4 {
+    padding: 20px 0;
+  }
+  @media (--for-tablet-port-up) {
+    h4 {
+      padding: 50px 0;
+    }
+  }
+}

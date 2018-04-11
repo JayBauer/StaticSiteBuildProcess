@@ -1,0 +1,146 @@
+/*
+Component: Staggered Card Blocks
+Author: Jay Bauer
+Organization: Elite Digital
+
+Staggered-style card blocks on home and litigation page
+*/
+
+@mixin card-blocks($image-size, $info-size, $margin) {
+  .card-blocks {
+    .card-block {
+      lost-center: math($image-size + 70px);
+      margin: * * $margin;
+      &__image {
+        display: flex;
+        lost-column: 1/1 0 0;
+        align-items: center;
+        justify-content: center;
+        min-height: $image-size;
+        &--orange {
+          background-color: $orange;
+        }
+        &--yellow {
+          background-color: $yellow;
+        }
+        &--light-blue {
+          background-color: $light-blue;
+        }
+        &--purple {
+          background-color: $purple;
+        }
+        &--red {
+          background-color: $red;
+        }
+      }
+      &__text {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        background-color: $white;
+        text-align: center;
+        h4 {
+          color: $blue;
+          margin-bottom: 20px;
+        }
+        p {
+          font-family: 'Muli', sans-serif;
+        }
+      }
+    }
+  }
+  /* Media Queries */
+  @media (--for-tablet-port-up) {
+    .card-blocks {
+      lost-flex-container: row;
+      justify-content: center;
+      margin: $margin 0;
+      .card-block {
+        lost-center: $image-size;
+      }
+    }
+  }
+  @media (--for-tablet-port-up) {
+    .card-blocks {
+      &__left-blocks {
+        width: 100%;
+        margin-right: 0;
+      }
+      &__right-blocks {
+        width: 100%;
+        margin-left: 0;
+      }
+      .card-block {
+        lost-center: math($image-size + $info-size);
+        @for $i from 2 to 5 by 2 {
+          &--left:nth-of-type($i) {
+            flex-flow: row-reverse;
+          }
+        }
+        @for $i from 1 to 5 by 2 {
+          &--right:nth-of-type($i) {
+            flex-flow: row-reverse;
+          }
+        }
+        &__image {
+          max-width: $image-size;
+        }
+        &__text {
+          width: calc(100% - $image-size);
+          text-align: left;
+        }
+      }
+    }
+  }
+  @media (--for-tablet-land) {
+    $card-offset: math(($info-size - $image-size) / 2);
+    .card-blocks {
+      .card-block {
+        @for $i from 2 to 5 by 2 {
+          &--left:nth-of-type($i) {
+            transform: translateX(math(- $card-offset));
+          }
+          &--right:nth-of-type($i) {
+            transform: translateX($card-offset);
+          }
+        }
+        @for $i from 1 to 5 by 2 {
+          &--left:nth-of-type($i) {
+            transform: translateX($card-offset);
+          }
+          &--right:nth-of-type($i) {
+            transform: translateX(math(- $card-offset));
+          }
+        }
+      }
+    }
+  }
+  @media (--for-desktop-up) {
+    .card-blocks {
+      position: relative;
+      flex-wrap: nowrap;
+      padding-top: 40px;
+      &__left-blocks {
+        width: auto;
+        margin-right: $margin;
+        .card-block {
+          flex-flow: row-reverse !important;
+        }
+      }
+      &__divider {
+        position: absolute 0 * * *;
+        height: 90%;
+        border: 0 2px 0 2px / solid / $purple;
+        border-radius: 5px;
+      }
+      &__right-blocks {
+        width: auto;
+        margin-left: $margin;
+        transform: translateY(calc($image-size / 2));
+        .card-block {
+          flex-flow: row !important;
+        }
+      }
+    }
+  }
+}

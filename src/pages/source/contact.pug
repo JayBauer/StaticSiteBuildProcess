@@ -1,0 +1,33 @@
+extends ../layouts/default.pug
+
+include ../partials/mixins.pug
+
+block title
+  title Contact - Diagnostic Illumination
+
+block header-content
+  section#contact.contact-page
+    h1 Contact
+    form#contact-form.contact-form
+      div.form-row
+        input(type='text' name='fname' placeholder='First Name')
+        input(type='text' name='lname' placeholder='Last Name')
+      div.form-row
+        input(type='text' name='phone' placeholder='Phone Number')
+        input(type='text' name='email' placeholder='Email Address')
+      div.form-row.form-row--single
+        textarea(name='message' placeholder='Message' form='contact-form')
+      div.form-row
+        +btn-big('submit-btn', '#')
+          button Submit
+    
+
+block content
+  section#book-now.contact-page
+    h1 Book Now
+    h4 Get Results back in two weeks.
+    +btn-big()
+      button Book A Scan
+    
+  section#location.contact-page.location
+    include ../partials/location.pug

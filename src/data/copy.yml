@@ -1,12 +1,24 @@
 logo:
   circle:
-    src: "images/di-logo-circle-blue.svg"
+    src: "/images/di-logo-circle-blue.svg"
     alt: "Diagnostic Illumination Logo - Circle"
   text:
-    src: "images/di-logo-text.svg"
+    src: "/images/di-logo-text.svg"
     alt: "Diagnostic Ilumination Logo - Text"
   white:
-    src: "images/diagnostic-logo.png"
+    src: "/images/diagnostic-logo.png"
     alt: "Diagnostic Illumination Logo"
 infoAddress: "info@diagnosticillumination.com"
 infoPhone: "647 689 3881"
+
+faqLeft:
+  question-1:
+    title: "What is the MRI scanner comprised of?"
+    answer: "Magnetic Resonance Imaging, commonly called MRI, is a non-invasive, painless procedure that produces very detailed pictures of soft body tissue and organs without using ionizing radiation, as with other diagnostic procedures such as X-ray and Computed Tomography (CT). Using a large magnet, radio waves and complex computer and software technology, MRI scans the patient's body and produces two or three-dimensional images of body tissues. MRI is important as both a screening and diagnostic tool due to its ability to detect many cardiovascular, neurological, oncological and musculoskeletal diseases/injuries earlier and more accurately than other modalities."
+  question-2:
+    title: "What is the MRI scanner comprised of?"
+    answer: "Magnetic Resonance Imaging, commonly called MRI, is a non-invasive, painless procedure that produces very detailed pictures of soft body tissue and organs without using ionizing radiation, as with other diagnostic procedures such as X-ray and Computed Tomography (CT). Using a large magnet, radio waves and complex computer and software technology, MRI scans the patient's body and produces two or three-dimensional images of body tissues. MRI is important as both a screening and diagnostic tool due to its ability to detect many cardiovascular, neurological, oncological and musculoskeletal diseases/injuries earlier and more accurately than other modalities."
+faqRight:
+  question-1:
+    title: "What is the MRI scanner comprised of?"
+    answer: "Magnetic Resonance Imaging, commonly called MRI, is a non-invasive, painless procedure that produces very detailed pictures of soft body tissue and organs without using ionizing radiation, as with other diagnostic procedures such as X-ray and Computed Tomography (CT). Using a large magnet, radio waves and complex computer and software technology, MRI scans the patient's body and produces two or three-dimensional images of body tissues. MRI is important as both a screening and diagnostic tool due to its ability to detect many cardiovascular, neurological, oncological and musculoskeletal diseases/injuries earlier and more accurately than other modalities."

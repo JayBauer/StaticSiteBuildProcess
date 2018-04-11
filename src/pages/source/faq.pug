@@ -1,0 +1,26 @@
+extends ../layouts/default.pug
+
+include ../partials/mixins.pug
+
+block title
+  title Frequently Asked Questions - Diagnostic Illumination
+
+block header-content
+
+block content
+  section#questions.faq-page
+    h1 Frequently Asked Questions
+    div.question-blocks
+      div.question-blocks--left
+        each question, index in faqLeft
+          +question(question.title, question.answer, `faq-left-${index}`)
+      div.question-blocks__divider
+      div.question-blocks--right
+        each question, index in faqRight
+          +question(question.title, question.answer, `faq-right-${index}`)
+
+  section#how-it-works.faq-page.how-it-works
+    include ../partials/how-it-works.pug
+
+  section#book-now.faq-page.book-now
+    +book-now()

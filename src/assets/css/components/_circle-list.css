@@ -1,0 +1,30 @@
+/*
+Component: Circle-bulleted list
+Author: Jay Bauer
+Organization: Elite Digital
+
+List with multi-coloured circle bullets
+*/
+
+.circle-list {
+  .circle-list__list-item {
+    lost-center: 600px;
+    flex-flow: row;
+    align-items: flex-start;
+    padding: 30px 30px 0 40px;
+    @include half-circle-spinner(36px, $blue, 1s);
+    h4, p {
+      padding: * * * 20px;
+    }
+  }
+}
+@media (--for-tablet-port-up) {
+  .circle-list {
+    .circle-list__list-item {
+      padding: 50px * * 0;
+      h4, p {
+        padding: * * * 40px;
+      }
+    }
+  }
+}

@@ -1,0 +1,148 @@
+/*
+Page/Template: Litigation Page
+Author: Jay Bauer
+Organization: Elite Digital
+
+Organized by section based on the header titles
+Mobile-first, media queries are handled per-section
+*/
+
+section.litigation-page {
+  &#mri-benefits {
+    background-color: $off-white;
+    @media (--for-tablet-land-up) {
+      h1 {
+        padding: 50px * * *;
+      }
+      .circle-list {
+        position: relative;
+        lost-center: 900px;
+        flex-flow: row;
+        margin: 50px *;
+        &__divider {
+          position: absolute 0 50% * *;
+          height: 110%;
+          border: 0 2px 0 2px / solid / $purple;
+          border-radius: 5px;
+        }
+        &--left {
+          margin-right: 30px;
+        }
+        &--right {
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+  &#weighted-imaging {
+    background-color: $white;
+  }
+  &#swi-benefits {
+    background-color: $off-white;
+    h1 {
+      padding: * 40px 40px 40px;
+    }
+    @include card-blocks(150px, 350px, 20px);
+    .card-block__text {
+      p {
+        padding: * 30px;
+      }
+    }
+    .card-blocks__divider {
+      position: absolute 10px * * *;
+      height: 120%;
+    }
+    @media (--for-desktop-up) {
+      padding: 75px * 100px;
+    }
+  }
+  &#swi-accuracy {
+    h1 {
+      color: $white;
+      padding: * * 50px *;
+    }
+    .rounded-blocks {
+      margin: 0 15px;
+      .rounded-block {
+        $height: 40px;
+
+        lost-center: 500px;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        height: $height;
+        margin: calc($height / 2) * *;
+        color: $blue $white;
+        border-left-radius: calc($height / 2);
+        border-right-radius: calc($height / 2);
+        &::before {
+          content: '';
+          position: absolute;
+          left: calc($height / 4);
+          size: calc($height / 2);
+          border-radius: 50%;
+          background-color: $orange;
+        }
+        h5 {
+          text-transform: uppercase;
+          font-weight: extrabold;
+        }
+      }
+    }
+    @media (--for-phone) {
+      padding: 25px * * *;
+      h1 {
+        padding: 30px 0;
+        background-color: $blue;
+      }
+      h5 {
+        font-size: 12px;
+      }
+    }
+    @media (--for-tablet-port-up) {
+      padding: 75px * 125px;
+      .rounded-blocks {
+        .rounded-block {
+          $height: 60px;
+
+          height: $height;
+          margin: calc($height / 2) * * *;
+          border-left-radius: calc($height / 2);
+          border-right-radius: calc($height / 2);
+          &::before {
+            left: calc($height / 4);
+            size: calc($height / 2);
+          }
+        }
+      }
+    }
+    @media (--for-tablet-land-up) {
+      .rounded-blocks {
+        lost-center: 1000px;
+        &--left {
+          lost-column: 1/2 0 40px;
+        }
+        &--right {
+          lost-column: 1/2 0 40px;
+          transform: translateY(45px);
+        }
+        .rounded-block {
+          width: 100%;
+        }
+      }
+    }
+  }
+  &#when-to-order-swi {
+    background-color: $white;
+    .circle-list__list-item {
+      max-width: 500px;
+      padding: 25px * * *;
+      h4 {
+        color: $blue;
+      }
+      p {
+        font-family: "Muli", sans-serif;
+      }
+    }
+  }
+}

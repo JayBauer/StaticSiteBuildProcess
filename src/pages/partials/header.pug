@@ -1,19 +1,20 @@
 header
   div.nav-box--mobile
-
     div.nav-box__nav-links.nav-box__nav-link--mail
       a.email-link(href=`mailto:${infoAddress}`): i
     div.nav-box__logo
-      img(src=logo.white.src alt=logo.white.alt)
+      a(href='/')
+        img(src=logo.white.src alt=logo.white.alt)
     div.nav-box__nav-links.nav-box__nav-link--menu
       button.btn-small menu
 
   div.nav-box--desktop
     div.nav-box__logo
-      img(src=logo.white.src alt=logo.white.alt)
+      a(href='/')
+        img(src=logo.white.src alt=logo.white.alt)
     div.nav-box__nav-menu
       nav.nav-menu__login-nav
-        a.login-nav__nav-item(href="/login") Log In
+        a.login-nav__nav-item(href="/booking#/login") Log In
         a.login-nav__nav-item(href=`mailto:${infoAddress}`) #{infoAddress} 
       nav.nav-menu__main-nav(role="navigation")
         a.main-nav__nav-item(href="/booking"): h4 Booking

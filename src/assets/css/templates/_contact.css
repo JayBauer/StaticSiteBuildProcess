@@ -1,0 +1,47 @@
+section.contact-page {
+  &#contact {
+    h1 {
+      color: $white;
+      padding: * * 50px *;
+    }
+    .contact-form {
+      .form-row {
+        input, textarea {
+          color: $white;
+          border-color: $white;
+          background-color: rgba(#7b89a9, 0.38);
+          margin: 15px *;
+          &::placeholder {
+            color: $white;
+            opacity: 1;
+          }
+        }
+        textarea {
+          height: 275px;
+          margin: * * 50px *;
+        }
+      }
+    }
+    @media (--for-phone) {
+      h1 {
+        font-size: 36px/36px;
+        padding: 30px 0;
+      }
+    }
+  }
+  &#book-now {
+    padding: 75px 0;
+    background-color: $off-white;
+    text-align: center;
+    h4 {
+      padding: 20px 0;
+      font-weight: extrabold;
+      color: $blue;
+    }
+    @media (--for-tablet-port-up) {
+      h4 {
+        padding: 50px 0;
+      }
+    }
+  }
+}

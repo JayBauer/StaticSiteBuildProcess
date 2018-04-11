@@ -32,6 +32,8 @@ const CSSPLUGINS = [
   require('postcss-nested'),
   require('postcss-define-function'),
   require('postcss-extend-rule'),
+  require('postcss-hexrgba'),
+  require('postcss-random'),
   require('postcss-math')({ functionName: 'math' }),
   require('autoprefixer')({ browsers: COMPATIBILITY }),
 
@@ -72,12 +74,24 @@ function clean(done) {
 
 // Check 'pages' and 'data' folders, load data, run through Pug compiler, then lint and validate
 function pages() {
-  return gulp.src(PATHS.pages + '/*.{html,pug,php}')
+  return gulp.src(PATHS.pages + '/source/**/*.{html,pug,php}')
     .pipe($.data(function(file) {
       return yaml.load(fs.readFileSync(PATHS.data + '/copy.yml', 'utf8'));
       // return JSON.parse(fs.readFileSync(PATHS.data + '/copy.json'))
     }))
     .pipe($.pug())
+    .pipe($.rename(path => {
+      if(path.basename != 'index') {
+        var folder = path.dirname.split('/')
+        folder.push(path.basename)
+
+        path.basename = 'index'
+        path.extname = '.html'
+
+        path.dirname = folder.join('/')
+      }
+      return path
+    }))
     //.pipe($.rename({extname: '.php'}))
     .pipe($.htmlhint('./.htmlhintrc'))
     .pipe($.htmlhint.reporter())
@@ -102,7 +116,7 @@ function lint() {
   return gulp.src(PATHS.root + '/js/*.js')
     .pipe($.jshint({
       esversion: 6,
-      // asi: true // Surpresses missing semi-colon warning
+      asi: true // Surpresses missing semi-colon warning
     }))
     .pipe($.notify(function(file) {
       if(file.jshint.success) {
@@ -148,9 +162,14 @@ function images() {
 }
 
 // Run BrowserSync for watching folder changes
+var historyApiFallback = require('connect-history-api-fallback');
 function server(done) {
   browser.init({
-    server: PATHS.dist, port: PORT, open: false
+    server: {
+      baseDir: './' + PATHS.dist
+    },
+    port: PORT,
+    open: false,
   });
   done();
 }

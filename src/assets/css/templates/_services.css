@@ -1,0 +1,132 @@
+/*
+Page/Template: Services Page
+Author: Jay Bauer
+Organization: Elite Digital
+
+Organized by section based on the header titles
+Mobile-first, media queries are handled per-section
+*/
+
+/* ************************** */
+/* Services Page Styles Start */
+/* ************************** */
+section.services-page {
+
+  /* *************** */
+  /* Services Blocks */
+  /* *************** */
+  &#services {
+    margin: 40px * * *;
+    padding: 0 * * *;
+    h1 {
+      padding: 40px 0;
+      background-color: $off-white;
+    }
+    .service-blocks {
+      .service-block {
+        lost-center: 560px;
+        margin: * * 20px *;
+        h4 {
+          width: 100%;
+          padding: 40px;
+          background-color: $blue;
+          color: $white;
+        }
+        p {
+          font-family: "Muli", sans-serif;
+          font-size: 12px/13px;
+          padding: 40px;
+          background-color: $white;
+        }
+      }
+    }
+
+    /* Media Queries */
+    @media (--for-phone) {
+      h1 {
+        font-size: 36px/36px;
+      }
+      .service-blocks {
+        margin: 20px;
+      }
+    }
+    @media (--for-tablet-port-up) {
+      margin: 0 0 -75px;
+      h1 {
+        padding: 100px 0;
+      }
+      .service-blocks {
+        transform: translateY(-50px);
+        .service-block {
+          p {
+            font-size: 14px/15px;
+          }
+        }
+      }
+    }
+    @media (--for-desktop-up) {
+      .service-blocks {
+        lost-flex-container: row;
+        justify-content: center;
+        align-items: center;
+        &--left {
+          margin-right: 30px;
+        }
+        &--right {
+          margin-left: 30px;
+        }
+        &__divider {
+          position: absolute -20px * * *;
+          height: 103%;
+          border: 0 2px 0 2px / solid / $white;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  /* *************** */
+  /* Benefits of MRI */
+  /* *************** */
+  &#benefits {
+    padding: 25px 0;
+    background-color: $white;
+
+    /* Media Queries */
+    @media (--for-phone) {
+      h1 {
+        font-size: 18px/18px;
+      }
+      h4 {
+        font-size: 12px/12px;
+      }
+    }
+    @media (--for-tablet-port-up) {
+      padding: 75px 0;
+      h1 {
+        padding: * * 30px *;
+      }
+    }
+  }
+
+  /* ****************** */
+  /* Customized Pricing */
+  /* ****************** */
+  &#pricing {
+    text-align: center;
+    color: $white;
+    h1 {
+      color: $white;
+    }
+    h4 {
+      padding: 20px 0;
+    }
+
+    /* Media Queries */
+    @media (--for-tablet-port-up) {
+      h4 {
+        padding: 50px 0;
+      }
+    }
+  }
+}

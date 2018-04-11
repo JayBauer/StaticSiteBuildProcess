@@ -79,7 +79,7 @@ module.exports = {
     "number-no-trailing-zeros": true,
     "property-case": "lower",
     "property-no-unknown": [ true, {
-      ignoreProperties: [ "/^lost/", "font-awesome" ]
+      ignoreProperties: [ "/^lost/", "font-awesome", "/^border-left/", "/^border-right/" ]
     } ],
     "rule-empty-line-before": [ "always-multi-line", {
       except: ["first-nested", "inside-block"],

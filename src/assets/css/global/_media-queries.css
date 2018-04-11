@@ -1,5 +1,5 @@
 /*
-Page/Template: All; Media Queries
+Global Styles: Media Queries
 Author: Jay Bauer
 Organization: Elite Digital
 
@@ -13,12 +13,12 @@ Sizes can be modified in "variables" file
 @custom-media --for-desktop only screen and ($desktop <= width <= $desktop-big);
 @custom-media --for-desktop-big only screen and (width > $desktop-big);
 
-@custom-media --for-tablet-port-up only screen and (width > $tablet-port);
-@custom-media --for-tablet-land-up only screen and (width > $tablet-land);
-@custom-media --for-desktop-up only screen and (width > $desktop);
+@custom-media --for-tablet-port-up only screen and (width >= $tablet-port);
+@custom-media --for-tablet-land-up only screen and (width >= $tablet-land);
+@custom-media --for-desktop-up only screen and (width >= $desktop);
 
-@custom-media --for-tablet-port-down only screen and (width < $tablet-port);
-@custom-media --for-tablet-land-down only screen and (width < $tablet-land);
-@custom-media --for-desktop-down only screen and (width < $desktop);
+@custom-media --for-tablet-port-down only screen and (width <= $tablet-port);
+@custom-media --for-tablet-land-down only screen and (width <= $tablet-land);
+@custom-media --for-desktop-down only screen and (width <= $desktop);
 
 @custom-media --nav-menu only screen and (width > 1075px);

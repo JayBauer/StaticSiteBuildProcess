@@ -1,0 +1,48 @@
+extends ../layouts/default.pug
+
+include ../partials/mixins.pug
+
+block title
+  title Diagnostic Illumination
+
+block header-content
+  div.header-content
+    div.header-content__text
+      h1 Schedule Your MRI Today
+      h4 Why wait for an MRI? Schedule your MRI appointment within 24 hours and receive your results within 24 hours post MRI scan completion.
+    div.header-content__buttons
+      +btn-big('eligibility-btn')
+        button Am I Eligible?
+      +btn-big('book-now-header-btn')
+        button Book A Scan
+
+block content
+  section#benefits.home-page
+    h1 The Benefits
+    div.card-blocks
+      div.card-blocks__left-blocks
+        +card-block()(src='images/calendar.svg', alt='Calendar', color='orange')
+          h4 MRI appointments are schedules directly through the hospital.
+          p Within 24 hours of receiving a completed requisiton form, hospital staff will contact patients to book an MRI appointment and coordinate the collection of additional medical information.
+        +card-block()(src='images/results.svg', alt='Results Clipboard', color='yellow')
+          h4 MRI Results available 24 hours post MRI scan.
+          p MRI results can be accessed through a hospital portal with your own unique login 24 hours following MRI scan completion.  Referring physicians or third pary sources will be forwarded results within one business day.
+        +card-block()(src='images/money.svg', alt='Money Icon', color='light-blue')
+          h4 Litigation financing for MRI scans
+          p Diagnostic Illumination offers convenient third-party litigation financing, which permits for deferred payment of the MRI scan until the case has settled.
+      div.card-blocks__divider
+      div.card-blocks__right-blocks
+        +card-block()(src='images/phone.svg', alt='24 Hour Phone', color='purple', direction='right')
+          h4 Urgent MRI Scans can be performed within 24 hours; Non-urgent MRI Scans within 1~2 weeks 
+        +card-block()(src='images/arrow-box.svg', alt='Box Icon with Arrow', color='red', direction='right')
+          h4 Multiple body part MRI scan packages offered
+          p Multiple Body Part MRI Scan Packages offered as an incentive to safeguard cost as being a deterrent in one’s resolve to detect pathology
+                 
+  section#location.home-page.location
+    include ../partials/location.pug
+  
+  section#how-it-works.home-page.how-it-works
+    include ../partials/how-it-works.pug
+  
+  section#book-now.home-page.book-now
+    +book-now()

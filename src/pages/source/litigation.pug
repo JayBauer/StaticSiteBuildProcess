@@ -1,0 +1,97 @@
+extends ../layouts/default.pug
+
+include ../partials/mixins.pug
+
+block title
+  title MRI For Litigation - Diagnostic Illumination
+
+block header-content
+
+block content
+  section#mri-benefits.litigation-page
+    h1 Benefits Utilizing MRI for Litigation
+    div.circle-list
+      div.circle-list--left
+        div.circle-list__list-item
+          h4 MRI is the gold standard for diagnosing and assessing soft tissue injuries in personal injury claimants.
+        div.circle-list__list-item
+          h4 MRI Scans Are Booked Within 24 Hours Of Receiving The Completed Referral Form
+        div.circle-list__list-item
+          h4 MRI Scans Occur Within 1-2 Weeks Of Receiving The Completed Referral
+        div.circle-list__list-item
+          h4 MRI is universally accepted not only because of its accuracy but also because of the objectivity of its ﬁndings. It matters not whether the claimant is sent for the test at the request of the plaintiff or defendant, the resulting report will be the same.
+      div.circle-list__divider
+      div.circle-list--right
+        div.circle-list__list-item
+          h4 Urgent MRI Scans can be performed within 24 hours
+        div.circle-list__list-item
+          h4 Comprehensive Radiological Reports Are Provided Within 24 Hours Following The MRI Scan
+        div.circle-list__list-item
+          h4 MRI results can be accessed through secure, encrypted, password protected hospital portal within 24 hours following MRI scan completion.
+
+  section#weighted-imaging.litigation-page
+    h1 Susceptibility Weighted Imaging Scans
+    div.circle-list
+      div.circle-list__list-item
+        img(src="/images/small-circle.svg" alt="circle")
+        h4 Susceptibility Weighted Imaging is a new MRI sequence that relies on the magnetic susceptibility of tissues or compounds in the brain, such as iron-rich hemosiderin, which is a byproduct of hemorrhage. 
+      div.circle-list__list-item
+        img(src="/images/small-circle.svg" alt="circle")
+        h4 Because of the Blood Brain Barrier, hemosiderin deposits remain in the brain for a very long time after the initial trauma.
+      div.circle-list__list-item
+        img(src="/images/small-circle.svg" alt="circle")
+        h4 SWI has been shown in several studies and in clinical application to be much more sensitive in detecting micro-hemorrhages than conventional methods, such as T2*-gradient echo (including 3 Tesla imaging).
+
+  section#swi-benefits.litigation-page
+    h1 Benefits Utilizing SWI for Litigation
+    div.card-blocks
+      div.card-blocks__left-blocks
+        +card-block()(src='/images/target.svg', alt='Target Icon', color='orange')
+          p Provides the highest level of sensitivity and detectability of the smallest brain injuries
+        +card-block()(src='/images/half-circle.svg', alt='Half-Circle Icon', color='red')
+          p Non-invasive, non-contrast imaging
+      div.card-blocks__divider
+      div.card-blocks__right-blocks
+        +card-block()(src='/images/magnifying-glass.svg', alt='Magnifying Glass Icon', color='light-blue')
+          p Provides high resolution visualization of abnormalities caused by small hemorrhages and microscopic tears
+        +card-block()(src='/images/venn-diagram.svg', alt='Diagram Icon', color='purple')
+          p Objective findings may be utilized to address an injured Insured clients’ Minor Injury Guideline (MIG) status either placing them within the MIG or outside of the MIG.
+        
+  section#swi-accuracy.litigation-page
+    h1 SWI Can Accurately Diagnose:
+    div.rounded-blocks
+      div.rounded-blocks--left
+        div.rounded-block: h5 Traumatic Brain Injuries
+        div.rounded-block: h5 Brain Hemorrhages
+        div.rounded-block: h5 Cerebrovascular Diseases
+      div.rounded-blocks--right
+        div.rounded-block: h5 Ischemic Brain Diseases
+        div.rounded-block: h5 Arteriovenous Malformations
+        div.rounded-block: h5 Neurodegenerative Diseases
+      
+  section#when-to-order-swi.litigation-page
+    h1 When to Order SWI
+    div.circle-list
+      div.circle-list__list-item
+        h4 Indication to order an SWI
+      div.circle-list__list-item
+        p Has your client suffered a head trauma secondary to a Motor Vehicle Collision?
+      div.circle-list__list-item
+        p Has your client suffered a head trauma secondary to a Slip and Fall Injury?
+      div.circle-list__list-item
+        h4 Is your client experiencing any one of the following symptoms?
+      div.circle-list__list-item
+        p Persistent headaches
+      div.circle-list__list-item
+        p Confusion or diminished cognitive abilities
+      div.circle-list__list-item
+        p Inability to concentrate
+      div.circle-list__list-item
+        p Fatigue that does not diminish with rest
+      div.circle-list__list-item
+        p Increased irritability or changes in personality
+      div.circle-list__list-item
+        p Suffered at loss of consciousness as a consequence of the trauma
+
+  section#book-now.litigation-page.book-now
+    +book-now()
