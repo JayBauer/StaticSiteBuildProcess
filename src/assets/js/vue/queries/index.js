@@ -6,8 +6,8 @@ export const ME = gql `
       id
       email
       password
-      first_name
-      last_name
+      firstName
+      lastName
       phone
       address1
       address2
@@ -18,15 +18,39 @@ export const ME = gql `
   }
 `
 
-export const USER_QUIZZES = gql`
+export const USER_QUIZZES = gql `
   query UserQuizzes($user: UserWhereUniqueInput!) {
     quizzes(user: $user) {
       id
-      booking_for
-      body_parts
+      createdAt
+      updatedAt
+      payment
+    }
+  }
+`
+
+export const GET_QUIZ = gql `
+  query Quiz($id: ID!) {
+    quiz(id:$id) {
+      id
+      createdAt
+      updatedAt
+      bookingFor
+      ontarioRes
+      bodyParts
       waiver {
+        party
+        otherParty
         agree
+        firstName
+        lastName
+        date
       }
+      referral {
+        maple
+        upload
+      }
+      payment
     }
   }
 `

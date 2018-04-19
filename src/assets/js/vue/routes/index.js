@@ -8,10 +8,6 @@ import Profile from '@c/account/Profile'
 import OrderHistory from '@c/account/OrderHistory'
 
 import Quiz from '@c/Quiz'
-import BookingFor from '@c/quiz/BookingFor'
-import Resident from '@c/quiz/Resident'
-import BodyParts from '@c/quiz/BodyParts'
-import Waiver from '@c/quiz/Waiver'
 
 let routes = [
   {
@@ -42,31 +38,9 @@ let routes = [
     ]
   },
   {
-    path: '/booking',
+    path: '/booking/:id',
     name: 'Booking',
     component: Quiz,
-    children: [
-      {
-        path: 'booking-for',
-        name: 'BookingFor',
-        component: BookingFor
-      },
-      {
-        path: 'resident',
-        name: 'Resident',
-        component: Resident
-      },
-      {
-        path: 'body-parts',
-        name: 'BodyParts',
-        component: BodyParts
-      },
-      {
-        path: 'waiver',
-        name: 'Waiver',
-        component: Waiver
-      }
-    ]
   }
 ]
 

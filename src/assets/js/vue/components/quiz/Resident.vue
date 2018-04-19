@@ -1,13 +1,13 @@
 <template lang='pug'>
-  section#booking-quiz.booking-page
-    h3 Are you a resident on Ontario?
-    div.form-group
-      label
-        input(type="radio" v-model="resident" value="yes")
-        span Yes
-      label
-        input(type="radio" v-model="resident" value="no")
-        span No
+  div#ontario-res
+    h3 Are you a resident of Ontario?
+    div.ontario-res__form.form-group
+      div.form-element.form-element--radio
+        input(id="resident_yes" type="radio" v-model="resident" value="YES")
+        label(for="resident_yes") Yes
+      div.form-element.form-element--radio
+        input(id="resident_no" type="radio" v-model="resident" value="NO")
+        label(for="resident_no") No
 </template>
 
 <script>

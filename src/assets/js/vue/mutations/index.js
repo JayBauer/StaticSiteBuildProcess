@@ -16,8 +16,8 @@ export const SIGNUP = gql `
   mutation Signup(
     $email: String!,
     $password: String!,
-    $first_name: String!,
-    $last_name: String!,
+    $firstName: String!,
+    $lastName: String!,
     $phone: String!,
     $address1: String!,
     $address2: String!,
@@ -29,8 +29,8 @@ export const SIGNUP = gql `
       email: $email,
       password: $password,
       isAdmin: true,
-      first_name: $first_name,
-      last_name: $last_name,
+      firstName: $firstName,
+      lastName: $lastName,
       phone: $phone,
       address1: $address1,
       address2: $address2,
@@ -49,8 +49,8 @@ export const SIGNUP = gql `
 export const UPDATE_USER = gql `
   mutation UpdateUser(
     $id:ID!,
-    $first_name: String,
-    $last_name: String,
+    $firstName: String,
+    $lastName: String,
     $phone: String,
     $email: String!,
     $address1: String,
@@ -61,8 +61,8 @@ export const UPDATE_USER = gql `
   ) {
     updateUser(
       id:$id,
-      first_name:$first_name,
-      last_name:$last_name,
+      firstName:$firstName,
+      lastName:$lastName,
       phone:$phone,
       email:$email,
       address1:$address1,
@@ -72,8 +72,8 @@ export const UPDATE_USER = gql `
       postal:$postal
     ) {
       id
-      first_name
-      last_name
+      firstName
+      lastName
       phone
       email
       address1
@@ -100,80 +100,71 @@ export const UPDATE_PASSWORD = gql `
   }
 `
 
+// export const UPLOAD = gql `
+//
+// `
+
 export const SAVE_QUIZ = gql `
-  mutation NewQuiz(
-    $user:UserCreateOneWithoutQuizzesInput!,
-    $booking_for:Booking,
-    $ontario_res:Boolean,
-    $body_parts:[String!]!,
-    $waiver:WaiverCreateInput!,
-    $referral:String,
-    $payment:Boolean
+mutation UpsertQuiz(
+  $id: ID!,
+  $user: ID!,
+  $bookingFor: Booking!,
+  $ontarioRes: IsResident!,
+  $bodyParts: Json!,
+  $waiver: WaiverCreateInput!,
+  $referral: ReferralCreateInput!,
+  $payment: Boolean!
+) {
+  saveQuiz(
+    id:$id
+    user:$user
+    bookingFor:$bookingFor
+    ontarioRes:$ontarioRes
+    bodyParts:$bodyParts
+    waiver:$waiver
+    referral:$referral
+    payment:$payment
   ) {
-    saveQuiz(
-      user:$user
-      booking_for:$booking_for
-      ontario_res:$ontario_res
-      body_parts:$body_parts
-      waiver:$waiver
-      referral:$referral
-      payment:$payment
+    id
+    bookingFor
+    ontarioRes
+    bodyParts
+    waiver {
+      firstName
+      lastName
+      date
+      agree
+    }
+    referral {
+      maple
+      upload
+    }
+    payment
+  }
+}
+`
+export const SAVE_CUSTOMER = gql `
+  mutation NewCustomer(
+    $source:String!,
+    $email:String!
+  ) {
+    saveCustomer(
+      source:$source
+      email:$email
     ) {
-      user {
-        id
-        email
-        first_name
-      }
-      booking_for
-      ontario_res
-      body_parts
-      waiver {
-        agree
-        first_name
-        last_name
-        date
-      }
-      referral
-      payment
+      stripeId
     }
   }
 `
 
-export const UPDATE_QUIZ = gql `
-  mutation UpdateQuiz(
-    $id:ID!,
-    $booking_for:Booking,
-    $ontario_res:Boolean,
-    $body_parts:[String!]!,
-    $waiver:WaiverCreateInput!,
-    $referral:String,
-    $payment:Boolean
-  ) {
-    updateQuiz(
-      id:$id
-      booking_for:$booking_for
-      ontario_res:$ontario_res
-      body_parts:$body_parts
-      waiver:$waiver
-      referral:$referral
-      payment:$payment
-    ) {
-      user {
-        id
-        email
-        first_name
-      }
-      booking_for
-      ontario_res
-      body_parts
-      waiver {
-        agree
-        first_name
-        last_name
-        date
-      }
-      referral
-      payment
-    }
-  }
-`
+// export const PAYMENT = gql `
+//   mutation NewPayment(
+//     customer:
+//   ) {
+//     newPayment(
+//
+//     ) {
+//
+//     }
+//   }
+// `

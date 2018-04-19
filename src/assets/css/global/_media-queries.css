@@ -22,3 +22,4 @@ Sizes can be modified in "variables" file
 @custom-media --for-desktop-down only screen and (width <= $desktop);
 
 @custom-media --nav-menu only screen and (width > 1075px);
+@custom-media --nav-menu-down only screen and (width < 1075px);

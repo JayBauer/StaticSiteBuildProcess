@@ -4,8 +4,8 @@
     h4 Create an account here to save your quote and continue along the booking process.
     form(@submit.prevent='signup')
       div.form-row
-        TextInput(v-model="first_name" placeholder="First Name")
-        TextInput(v-model="last_name" placeholder="Last Name")
+        TextInput(v-model="firstName" placeholder="First Name")
+        TextInput(v-model="lastName" placeholder="Last Name")
       div.form-row
         TextInput(v-model="phone" placeholder="Phone Number")
         TextInput(v-model="email" placeholder="Email Address")
@@ -38,8 +38,8 @@
         email: '',
         password: '',
         passwordConfirm: '',
-        first_name: '',
-        last_name: '',
+        firstName: '',
+        lastName: '',
         phone: '',
         address1: '',
         address2: '',
@@ -72,14 +72,14 @@
       },
 
       signup() {
-        const { email, password, first_name, last_name, phone, address1, address2, city, province, postal } = this.$data
+        const { email, password, firstName, lastName, phone, address1, address2, city, province, postal } = this.$data
         this.$apollo.mutate({
           mutation: SIGNUP,
           variables: {
             email,
             password,
-            first_name,
-            last_name,
+            firstName,
+            lastName,
             phone,
             address1,
             address2,

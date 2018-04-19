@@ -27,10 +27,10 @@
 
     methods: {
       login() {
-        const { email, password } = this.$data;
+        const { email, password } = this.$data
 
-        this.email = '';
-        this.password = '';
+        this.email = ''
+        this.password = ''
 
         this.$apollo.mutate({
           mutation: LOGIN,

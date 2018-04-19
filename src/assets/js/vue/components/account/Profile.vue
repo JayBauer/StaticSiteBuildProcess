@@ -6,8 +6,8 @@
     template(v-else)
       form.account-form.profile-form
         div.form-row
-          TextInput(v-model="first_name" type="text" placeholder="First Name")
-          TextInput(v-model="last_name" type="text" placeholder="Last Name")
+          TextInput(v-model="firstName" type="text" placeholder="First Name")
+          TextInput(v-model="lastName" type="text" placeholder="Last Name")
         div.form-row
           TextInput(v-model="phone" type="text" placeholder="Phone Number")
           TextInput(v-model="email" type="text" placeholder="Email Address")
@@ -43,8 +43,8 @@
     data: () => ({
       me: {},
       loading: 0,
-      first_name: '',
-      last_name: '',
+      firstName: '',
+      lastName: '',
       phone: '',
       email: '',
       address1: '',
@@ -69,8 +69,8 @@
 
     methods: {
       setUserData() {
-        this.first_name = this.me.first_name
-        this.last_name = this.me.last_name
+        this.firstName = this.me.firstName
+        this.lastName = this.me.lastName
         this.phone = this.me.phone
         this.email = this.me.email
         this.address1 = this.me.address1
@@ -81,14 +81,14 @@
       },
       
       saveUser() {
-        const { first_name, last_name, phone, email, address1, address2, city, province, postal } = this.$data
+        const { firstName, lastName, phone, email, address1, address2, city, province, postal } = this.$data
 
         this.$apollo.mutate({
           mutation: UPDATE_USER,
           variables: {
             id: this.me.id,
-            first_name,
-            last_name,
+            firstName,
+            lastName,
             phone,
             email,
             address1,
