@@ -1,8 +1,6 @@
 # Gulp and PostCSS is preeeetty cool
 Jay's in the house with the brand new jam.
 
-Maybe work on this intro later.
-
 ## Parser
 - [Pug](https://pugjs.org/): Pug templating language. Makes creating markup super spicy. Make sure to check out the documentation or you'll have no idea what's going on.
 
